@@ -32,7 +32,7 @@ module helper(a,b,c,d,HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,HEX6);
 	output HEX6;
 
 	assign HEX0 = ~a&~b&~c&d|~a&b&~c&~d|a&b&~c&d|a&~b&c&d;
-	assign HEX1 = ~a&b&~c&d|a&b&~d|a&c&d|b&c&~d;
+	assign HEX1 = a&b&~c&~d|a&c&d|b&c&~d|~a&b&c&~d;
 	assign HEX2 = a&b&~c&~d|a&b&c|~a&~b&c&~d;
 	assign HEX3 = ~a&~b&~c&d|~a&b&~c&~d|b&c&d|a&~b&c&~d;
 	assign HEX4 = ~a&d|~a&b&~c&~d|a&~b&~c&d;
