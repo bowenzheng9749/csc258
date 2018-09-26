@@ -3,10 +3,10 @@ module hexa_display(SW,HEX0);
 	output [6:0] HEX0;
 	
 	helper h0(
-		.a(SW[0]),
-		.b(SW[1]),
-		.c(SW[2]),
-		.d(SW[3]),
+		.a(SW[3]),
+		.b(SW[2]),
+		.c(SW[1]),
+		.d(SW[0]),
 		.HEX0(HEX0[0]),
 		.HEX1(HEX0[1]),
 		.HEX2(HEX0[2]),
