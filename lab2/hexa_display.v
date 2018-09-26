@@ -102,7 +102,7 @@ module four(a,b,c,d,m);
 	input d;
 	output m;
 
-   assign m = ~a&d|~b&~c&d|~a&b&~c;
+   assign m = ~a&d|~a&b&~c&~d|a&~b&~c&d;
 endmodule
 
 module five(a,b,c,d,m);
@@ -112,7 +112,7 @@ module five(a,b,c,d,m);
 	input d;
 	output m;
 	
-	assign m = ~a&~b&d|~a&~b&c|~a&c&d|a&b&~c&d;
+	assign m = ~a&~b&d|~a&b&c&d|a&b&~c&d|~a&~b&c&~d;
 endmodule
 
 module six(a,b,c,d,m);
