@@ -1,4 +1,4 @@
-/*module hexa_display(SW,HEX);
+module hexa_display(SW,HEX);
 	input [3:0] SW;
 	output [6:0] HEX;
 
@@ -128,8 +128,8 @@ module six(a,b,c,d,m);
 	output m;
 
 	assign m = ~((~d & ~c & ~b)|(d & c & ~b & ~a)|(~d & c & b & a));
-endmodule */
-
+endmodule 
+/*
 module hexa_display(SW,HEX);
 	input [3:0] SW;
 	output [6:0] HEX;
@@ -254,4 +254,4 @@ module six(a,b,c,d,m);
 	
 	assign m = ~((d & a) | (d & b) | (~c & b) | (~a & c & ~d) | (~b & c & ~d) | (~b & ~c & d));
 endmodule
-
+*/
