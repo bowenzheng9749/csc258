@@ -1,5 +1,5 @@
 
-module lab3part1(SW, LEDR)
+module lab3part1(SW, LEDR);
 	input [9:0] SW;
 	output LEDR[0];
 
