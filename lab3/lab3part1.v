@@ -1,7 +1,7 @@
 
 module lab3part1(SW, LEDR);
 	input [9:0] SW;
-	output LEDR[0];
+	output [1:0] LEDR;
 
 	reg Out;
 
