@@ -1,8 +1,8 @@
 vlib work
 
-vlog -timescale 1ns/1ns lab3part1.v
+vlog -timescale 1ns/1ns lab3part2.v
 
-vsim lab3part1
+vsim lab3part2
 
 log {/*}
 
