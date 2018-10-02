@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/h/u14/c6/01/zhengbo8/Desktop/csc258/lab3/part3
 valuFunctions
-Z1 !s110 1538506380
+Z1 !s110 1538511809
 !i10b 1
 !s100 :WzKUV4cJH9@Sg@f5XIWV0
 IjBlc=c_fPC3canOaO`dEo0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1538506359
+Z3 w1538511780
 Z4 8lab3part3.v
 Z5 Flab3part3.v
 L0 21
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1538506380.000000
+Z7 !s108 1538511809.000000
 Z8 !s107 lab3part3.v|
 Z9 !s90 -reportprogress|300|-timescale|1ns/1ns|lab3part3.v|
 !i113 1
@@ -31,7 +31,7 @@ Z10 o-timescale 1ns/1ns
 Z11 tCvgOpt 0
 nalu@functions
 vfourRippleCarryAdder
-R1
+Z12 !s110 1538511810
 !i10b 1
 !s100 9kaHnk2F?Y82KH[dJDo@j2
 Ia;M_1nmm`?_Va[c;zbRF>0
@@ -53,7 +53,7 @@ R10
 R11
 nfour@ripple@carry@adder
 vfulladder
-R1
+R12
 !i10b 1
 !s100 _gOzT4P[kk4756kzkk8h73
 I?S`B0o=8]eK2Y_4OAH8<a1
@@ -74,7 +74,7 @@ R9
 R10
 R11
 vhelper
-R1
+R12
 !i10b 1
 !s100 E<i;ZZ<Y^`Fi8;eKGmM2a0
 IQYi@OYGfnV=j[bLnHUJPE0
@@ -95,7 +95,7 @@ R9
 R10
 R11
 vhexa_decoder
-R1
+R12
 !i10b 1
 !s100 >Fd`f3[YmSjOEPTO7[i5P2
 I0]E]RKCUW51Tc?fY4bb:c0
