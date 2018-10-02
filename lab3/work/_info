@@ -1,0 +1,95 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/h/u14/c6/01/zhengbo8/Desktop/CSC258/csc258/lab3
+vfourRippleCarryAdder
+Z1 !s110 1538501243
+!i10b 1
+!s100 IlTn:GjD0Qb`EYQN?Xb``1
+I5CO0zG448f`6Q<=Xn]XMQ0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 d/h/u14/c6/01/zhengbo8/Desktop/csc258/lab3
+Z4 w1538501239
+Z5 8lab3part2.v
+Z6 Flab3part2.v
+L0 16
+Z7 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z8 !s108 1538501242.000000
+Z9 !s107 lab3part2.v|
+Z10 !s90 -reportprogress|300|-timescale|1ns/1ns|lab3part2.v|
+!i113 1
+Z11 o-timescale 1ns/1ns
+Z12 tCvgOpt 0
+nfour@ripple@carry@adder
+vfulladder
+R1
+!i10b 1
+!s100 C9<i``^E]f5Ri?dih]?]T0
+I6^doQIRz0_=NIjBKRozRl0
+R2
+R3
+R4
+R5
+R6
+L0 33
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vlab3part1
+!s110 1538441277
+!i10b 1
+!s100 ]nYCjnP;kOP;SH1OmkPWo0
+IEA4B`]8OD4oR=CNjDBo^h0
+R2
+R0
+w1538187345
+8lab3part1.v
+Flab3part1.v
+L0 2
+R7
+r1
+!s85 0
+31
+!s108 1538441277.000000
+!s107 lab3part1.v|
+!s90 -reportprogress|300|-timescale|1ns/1ns|lab3part1.v|
+!i113 1
+R11
+R12
+vlab3part2
+R1
+!i10b 1
+!s100 JQjzG69L3=8j1e^_CB;XC2
+IzEJX_L9k1MDY8S=4CVB?`3
+R2
+R3
+R4
+R5
+R6
+L0 3
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
