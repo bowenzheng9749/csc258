@@ -9,7 +9,7 @@ module lab3part2(SW,LEDR);
 	fulladder FA1(SW[0],SW[4],SW[8], c1, LEDR[0]);
 	fulladder FA2(SW[1],SW[5],c1, c2, LEDR[1]);
 	fulladder FA3(SW[2],SW[6],c2, c3, LEDR[2]);
-	fulladder FA3(SW[3],SW[7],c3, LEDR[4],LEDR[3]);
+	fulladder FA4(SW[3],SW[7],c3, LEDR[4],LEDR[3]);
 
 endmodule
 
