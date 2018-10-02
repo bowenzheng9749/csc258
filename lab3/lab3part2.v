@@ -36,5 +36,5 @@ module fulladder(a,b,ci,co,s);
 	output s; // this is for output
 
 	assign co = (a&b)|(a&ci)|(b&ci)|(a&b&ci);
-	assign s = a^b^c;
+	assign s = a^b^ci;
 endmodule
