@@ -19,6 +19,6 @@ module fulladder(a,b,c,x,y);
 	output x; // this is for carry
 	output y; // this is for output
 
-	assgin x = (a&b)|(a&c)|(b&c)|(a&b&c);
+	assign x = (a&b)|(a&c)|(b&c)|(a&b&c);
 	assign y = a^b^c;
 endmodule
