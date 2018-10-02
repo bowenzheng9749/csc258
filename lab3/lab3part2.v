@@ -26,7 +26,7 @@ module fourRippleCarryAdder(A,B,cin, S, cout);
 	fulladder FA2(A[1],B[1],c1, c2, S[1]);
 	fulladder FA3(A[2],B[2],c2, c3, S[2]);
 	fulladder FA4(A[3],B[3],c3, cout,S[3]);
-	
+
 endmodule
 
 
@@ -35,6 +35,6 @@ module fulladder(a,b,ci,co,s);
 	output co; // this is for carry
 	output s; // this is for output
 
-	assign co = (a&b)|(a&c)|(b&c)|(a&b&c);
+	assign co = (a&b)|(a&ci)|(b&ci)|(a&b&ci);
 	assign s = a^b^c;
 endmodule

@@ -6,3 +6,16 @@ module lab3part2(SW, LEDR, HEX0, HEX1, HEX3, HEX3, HEX4, HEX5);
 
 	wire [7:0] out;
 
+
+endmodule
+
+module aluFunctions(A, B, Function, aluOut);
+	input [3:0] A;
+	input [3:0] B;
+	input [3:0] Functions;
+	output aluOut;
+
+	lab3part2 a0 (
+
+
+	)
