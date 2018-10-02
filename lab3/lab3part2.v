@@ -3,7 +3,7 @@
 module lab3part2(SW,LEDR);
 	input [8:0] SW; //SW[7:4] for A, SW[3:0] for B, SW[8] for cin. 
 	output [4:0] LEDR; //
-	fourRippleCarryAdder(
+	fourRippleCarryAdder u0(
 		.A(SW[7:4]),
 		.B(SW[3:0]),
 		.cin(SW[8]),
