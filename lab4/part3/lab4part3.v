@@ -58,7 +58,8 @@ endmodule
 module flipflop(d, clk, reset_n, q);
 	input d;
 	input clk, reset_n;
-	output  q;
+	output q;
+	reg q;
 	always @(posedge clk)
 		begin
 			if (reset_n == 1'b0)
