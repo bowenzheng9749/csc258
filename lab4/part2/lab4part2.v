@@ -19,15 +19,15 @@ module lab4part2(SW, LEDR,KEY, HEX0, HEX4, HEX5);
 endmodule
 
 module register(d, clk, reset_n, q);
-	input [7:0]d;
+	input [7:0] d;
 	input clk, reset_n;
 	output [7:0] q;
 	always @(posedge clk)
 		begin
 			if (reset_n == 1'b0)
-				q[7:0] <= 8'b00000000;
+				q[0:7] <= 8'b00000000;
 			else
-				q[7:0] <= d[7:0];
+				q[0:7] <= d[0:7];
 		end
 endmodule
 
