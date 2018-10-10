@@ -18,7 +18,7 @@ module lab4part2(SW, LEDR,KEY, HEX0, HEX4, HEX5);
 
 endmodule
 
-module register(d, clk, reset_n, q)
+module register(d, clk, reset_n, q);
 	input [7:0]d;
 	input clk, reset_n;
 	output [7:0] q;
