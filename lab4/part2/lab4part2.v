@@ -22,6 +22,7 @@ module register(d, clk, reset_n, q);
 	input [7:0] d;
 	input clk, reset_n;
 	output [7:0] q;
+	reg [7:0] q;
 	always @(posedge clk)
 		begin
 			if (reset_n == 1'b0)
