@@ -25,9 +25,9 @@ module register(d, clk, reset_n, q);
 	always @(posedge clk)
 		begin
 			if (reset_n == 1'b0)
-				q[0:7] <= 8'b00000000;
+				q <= 8'b00000000;
 			else
-				q[0:7] <= d[0:7];
+				q <= d;
 		end
 endmodule
 
