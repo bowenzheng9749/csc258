@@ -10,6 +10,7 @@ endmodule
 
 module shifter(asr_in, shift, load_val, load_n, clk, reset_n, Q);
 	input asr_in, load_n, clk, reset_n;
+	input shift;
 	input [7:0] load_val;
 	output [7:0] Q;
 	wire w7, w6, w5, w4, w3, w2, w1, W0;
