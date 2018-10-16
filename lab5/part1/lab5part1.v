@@ -8,7 +8,7 @@ module lab5part1(SW, KEY,HEX0, HEX1);
 
 	hexa_decoder h0(w[3:0], HEX0[6:0]);
 	hexa_decoder h1(w[7:4], HEX1[6:0]);
-	counter c (SW[1], KEY[0], SW[0], wire[7:0]);
+	counter c (SW[1], KEY[0], SW[0], w[7:0]);
 
 endmodule
 
