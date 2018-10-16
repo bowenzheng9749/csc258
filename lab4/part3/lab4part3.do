@@ -12,7 +12,7 @@ force {SW[9]} 0 0, 1 5, 0 100, 1 105
 # SW[7:0] = LoadVal[7:0];
 force {SW[7: 0]} 10101010 0, 10101010 100
 # KEY[0] = clk;
-force {KEY[0]} 0 0, 1 5 -r 10
+force {KEY[0]} ;1 5 -r 10
 # KEY[1] = Load_n;
 force {KEY[1]} 0 10, 1 20, 0 110, 1 120
 # KEY[2] = ShiftRight;
