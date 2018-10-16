@@ -14,7 +14,7 @@ endmodule
 
 
 module counter(enable, clk, clear_b, Q);
-	input enable, clk clear_b;
+	input enable, clk, clear_b;
 	output [7:0] Q;
 	wire  w6, w5, w4, w3, w2, w1, w0;
 	assign w6 = enable&Q[7];
