@@ -16,14 +16,14 @@ endmodule
 module counter(enable, clk, clear_b, Q);
 	input enable, clk, clear_b;
 	output [7:0] Q;
-	wire  w6, w5, w4, w3, w2, w1, w0;
-	assign w6 = enable&Q[7];
-	assign w5 = w6&Q[6];
-	assign w4 = w5&Q[5];
-	assign w3 = w4&Q[4];
-	assign w2 = w3&Q[3];
-	assign w1 = w2&Q[2];
-	assign w0 = w1&Q[1];
+	wire  [6:0]w;
+	assign w[6] = enable&Q[7];
+	assign w[5] = w[6]&Q[6];
+	assign w[4] = w[5]&Q[5];
+	assign w[3] = w[4]&Q[4];
+	assign w[2] = w[3]&Q[3];
+	assign w[1] = w[2]&Q[2];
+	assign w[0] = w[1]&Q[1];
 
 	one_bit_counter c7(
 		.T(enable),
