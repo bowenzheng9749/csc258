@@ -32,43 +32,43 @@ module counter(enable, clk, clear_b, Q);
 		.Q(Q[7])
 	);
 	one_bit_counter c6(
-		.T(w6),
+		.T(w[6]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[6])
 	);
 	one_bit_counter c5(
-		.T(w5),
+		.T(w[5]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[5])
 	);
 	one_bit_counter c4(
-		.T(w4),
+		.T(w[4]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[4])
 	);
 	one_bit_counter c3(
-		.T(w3),
+		.T(w[3]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[3])
 	);
 	one_bit_counter c2(
-		.T(w2),
+		.T(w[2]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[2])
 	);
 	one_bit_counter c1(
-		.T(w1),
+		.T(w[1]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[1])
 	);
 	one_bit_counter c0(
-		.T(w0),
+		.T(w[0]),
 		.clk(clk),
 		.clear_b(clear_b),
 		.Q(Q[0])
