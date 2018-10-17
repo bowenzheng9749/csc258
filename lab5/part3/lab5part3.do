@@ -1,21 +1,14 @@
 vlib work
 
-vlog -timescale 1ns/1ns lab5part3.v
+vlog -timescale 1ns/1ns morseencoder.v
 
-vsim morsecode
+vsim morseencoder
 
-# Log all signals and add some signals to waveform window.
 log {/*}
-# add wave {/*} would add all items in top level simulation module.
 add wave {/*}
-
-
-force {SW[2:0]} 3'b000
-# enable
-force {SW[3]} 0 0, 1 2
-# reset_n
-
-force {KEY[0]} 0 0, 1 2
-force {KEY[1]} 1 0, 0 1, 1 2, 0 3, 1 4
-force {CLOCK_50} 0 0, 1 1 -r 2
-run 200000010ns
+force {rate} 0;
+force {key[2: 0]} 2#110
+force {start} 1 0, 0 20
+force {clk} 0 0, 1 10 -r 20
+force {asr_n} 1 0, 0 1, 1 2
+run 1800ns
