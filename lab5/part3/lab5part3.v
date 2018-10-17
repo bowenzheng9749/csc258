@@ -1,9 +1,9 @@
-module lab5part3(SW, KEY, CLOCK_50, LEDR)
+module lab5part3(SW, KEY, CLOCK_50, LEDR);
 	input [2:0] SW;
 	input [1:0] KEY;
 	input CLOCK_50;
 	output [1:0] LEDR;
-	
+
 	morseencode(SW[2:0], KEY[0], CLOCK_50, KEY[1], LEDR[0]);
 
 endmodule
