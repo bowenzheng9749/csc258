@@ -1,6 +1,6 @@
 vlib work
 
-vlog -timescale 1ns/1ns morsecode.v
+vlog -timescale 1ns/1ns lab5part3.v
 
 vsim morsecode
 
