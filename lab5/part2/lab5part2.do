@@ -19,4 +19,4 @@ force {clock} 0 0, 1 1 -r 2
 
 
 
-run 200ns
+run 20000000ns
