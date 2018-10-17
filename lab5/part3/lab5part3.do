@@ -8,7 +8,7 @@ vsim morsecode
 log {/*}
 # add wave {/*} would add all items in top level simulation module.
 add wave {/*}
-force {SW[2:0]} 3'b001
+force {SW[2:0]} 3'b000
 # enable
 force {SW[3]} 0 0, 1 2
 # reset_n
