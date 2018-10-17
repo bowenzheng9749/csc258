@@ -15,7 +15,7 @@ module morsecode(SW, KEY,CLOCK_50,LEDR0);
 	RateDivider r0 (
 		.enable(SW[3]),
 		.clock(CLOCK_50),
-		.reset_n(KEY[1]),
+		.reset_n(KEY[0]),
 		.q(en)
 		);
 		
