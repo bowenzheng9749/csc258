@@ -1,7 +1,7 @@
 module lab5part2(SW, KEY, HEX0, CLOCK_50);
 	input CLOCK_50;
 	input [1:0] SW;
-	input KEY[0];
+	input [1:0] KEY;
 	output [6:0] HEX0;
 
 	wire [3:0] w;
@@ -16,8 +16,9 @@ endmodule
 
 module counter(enable, key, reset_n, clock, out);
 	input [1:0] key;
-	input enable;
+	input enable, reset_n;
 	input clock;
+
 	output [3:0] out;
 	wire w;
 
@@ -41,7 +42,8 @@ endmodule
 module displaycounter(enable, reset_n, clock, q);
 	input enable, reset_n;
 	input clock;
-	output req [3:0] q;
+	output [3:0] q;
+	reg [3:0] q;
 
 	always @(posedge clock, negedge reset_n)
 	begin
