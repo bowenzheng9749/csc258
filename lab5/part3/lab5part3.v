@@ -24,7 +24,7 @@ module morseencode(in, reset, clk, par_load, out);
 	ratedivider r(reset, clk, w2);
 endmodule
 
-module lut(key, out)
+module lut(key, out);
 	input [2:0] key;
 	output reg [13:0] out;
 
@@ -36,7 +36,7 @@ module lut(key, out)
 			3'd2: out = {6'd0, 8'b10101110};
 			3'd3: out = {4'd0, 10'b1010101110};
 			3'd4: out = {4'd0, 10'b1011101110};
-			3'd5: out = {2'd0, 12'111010101110};
+			3'd5: out = {2'd0, 12'b111010101110};
 			3'd6: out = {14'b11101011101110};
 			3'd7: out = {2'd0, 12'b111011101010};
 		endcase

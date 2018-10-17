@@ -8,7 +8,7 @@ log{/*}
 
 add wave {/*}
 
-force {SW[2:0]} 3'b001
+force {SW[2:0]} 3'b000
 
 # enable
 force {SW[3]} 0 0, 1 2
@@ -19,4 +19,5 @@ force {KEY[0]} 0 0, 1 2
 force {KEY[1]} 1 0, 0 1, 1 2, 0 3, 1 4
 
 force {CLOCK_50} 0 0, 1 1 -r 2
+
 run 200000010ns
