@@ -60,7 +60,7 @@ module shifter(reset_n, clock, par_load, load, out);
 				q <= q << 1'b1;
 		end
 
-endmoudle
+endmodule
 
 
 module ratedivider(reset_n, clock, q);
