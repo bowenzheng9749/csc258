@@ -8,7 +8,7 @@ log {/*}
 
 add wave {/*}
 
-force {key} 2'b00
+force {key} 2'b01
 
 force {enable} 1
 
