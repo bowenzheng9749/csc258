@@ -34,9 +34,9 @@ module counter(enable, key, reset_n, clock, out);
 			endcase
 		end
 
-		ratedivider(enable, freq, reset_n, clock, w);
+		ratedivider r(enable, freq, reset_n, clock, w);
 
-		displaycounter(w, reset_n, clock, out);
+		displaycounter d(w, reset_n, clock, out);
 endmodule
 
 module displaycounter(enable, reset_n, clock, q);
