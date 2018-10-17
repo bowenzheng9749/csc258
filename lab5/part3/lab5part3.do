@@ -4,7 +4,7 @@ vlog -timescale 1ns/1ns lab5part3.v
 
 vsim lab5part3
 
-log{/*}
+log {/*}
 
 add wave {/*}
 
