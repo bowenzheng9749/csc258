@@ -50,13 +50,13 @@ module shifter(reset_n, clock, par_load, load, out);
 
 	reg [13:0] q;
 
-	always @(posedge clk, negedge reset_n, negedge display)
+	always @(posedge clock, negedge reset_n, negedge par_load)
 		begin
 			if (reset_n == 0)
 				q <= 14'b00000000000000;
 			else if (par_load == 1'b0)
 				q <= load;
-				out <= q[13]
+				out <= q[13];
 				q <= q << 1'b1;
 		end
 
