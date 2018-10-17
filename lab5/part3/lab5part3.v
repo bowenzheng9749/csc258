@@ -10,9 +10,9 @@ endmodule
 
 
 
-module morse(key, start, clk, asr_n, out, rate);
+module morse(key, start, clk, asr_n, out, flag);
 	input [2:0] key;
-	input start, asr_n, rate, clk;
+	input start, asr_n, flag, clk;
 	output out;
 	
 	wire [13:0] letter;
@@ -37,7 +37,7 @@ module morse(key, start, clk, asr_n, out, rate);
 	end
 	
 	
-	assign countdown = (rate == 1) ? 25'd24999999 : 25'd3;
+	assign countdown = (flag == 1) ? 25'd24999999 : 25'd3;
 	
 	lut lut0(key, letter);
 	

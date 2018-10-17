@@ -28,8 +28,8 @@ module counter(enable, key, reset_n, clock, out);
 		begin
 			case(key)
 				2'b00: freq = 0;
-				2'b01: freq = 28'd49999999;
-				2'b10: freq = 28'd99999999;
+				2'b01: freq = 28'd25;
+				2'b10: freq = 28'd50;
 				2'b11: freq = 28'd199999999;
 			endcase
 		end
