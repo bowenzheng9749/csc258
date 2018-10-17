@@ -14,8 +14,9 @@ endmodule
 
 
 
-module counter(key, reset_n, clock, out);
+module counter(enable, key, reset_n, clock, out);
 	input [1:0] key;
+	input enable;
 	input clock;
 	output [3:0] out;
 	wire w;
@@ -32,7 +33,7 @@ module counter(key, reset_n, clock, out);
 			endcase
 		end
 
-		ratedivider(freq, reset_n, clock, w);
+		ratedivider(enable, freq, reset_n, clock, w);
 
 		displaycounter(w, reset_n, clock, out);
 endmodule
@@ -57,9 +58,9 @@ module displaycounter(enable, reset_n, clock, q);
 endmodule
 
 
-module ratedivider(load, reset_n, clock, q);
+module ratedivider(enable, load, reset_n, clock, q);
 	input [27:0] load;
-	input reset_n;
+	input reset_n, enable;
 	input clock;
 	output q;
 
