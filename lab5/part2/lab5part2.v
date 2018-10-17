@@ -1,12 +1,12 @@
 module lab5part2(SW, KEY, HEX0, CLOCK_50);
 	input CLOCK_50;
-	input [1:0] SW;
+	input [2:0] SW;
 	input [1:0] KEY;
 	output [6:0] HEX0;
 
 	wire [3:0] w;
 
-	counter(SW,  KEY[0], CLOCK_50, w);
+	counter(SW[2], SW[1:0], KEY[0], CLOCK_50, w);
 
 	hexa_decoder h(w, HEX0);
 
