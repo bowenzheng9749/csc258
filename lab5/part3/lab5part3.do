@@ -5,8 +5,9 @@ vlog -timescale 1ns/1ns lab5part3.v
 vsim morseencoder
 
 log {/*}
+
 add wave {/*}
-force {rate} 0;
+
 force {key[2: 0]} 2#110
 force {start} 1 0, 0 20
 force {clk} 0 0, 1 10 -r 20
