@@ -1,0 +1,55 @@
+State Machine - |poly_function|part2:u0|control:C0|current_state report for poly_function
+Wed Oct 31 00:46:14 2018
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. State Machine - |poly_function|part2:u0|control:C0|current_state
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |poly_function|part2:u0|control:C0|current_state                                                                                                                                                                                                                                                                                                                          ;
++-----------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+
+; Name                        ; current_state.S_CYCLE_4 ; current_state.S_CYCLE_3 ; current_state.S_CYCLE_2 ; current_state.S_CYCLE_1 ; current_state.S_CYCLE_0 ; current_state.S_LOAD_X_WAIT ; current_state.S_LOAD_X ; current_state.S_LOAD_C_WAIT ; current_state.S_LOAD_C ; current_state.S_LOAD_B_WAIT ; current_state.S_LOAD_B ; current_state.S_LOAD_A_WAIT ; current_state.S_LOAD_A ;
++-----------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+
+; current_state.S_LOAD_A      ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ;
+; current_state.S_LOAD_A_WAIT ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 1                           ; 1                      ;
+; current_state.S_LOAD_B      ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ; 0                           ; 1                      ;
+; current_state.S_LOAD_B_WAIT ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 1                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_LOAD_C      ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 1                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_LOAD_C_WAIT ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 1                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_LOAD_X      ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 1                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_LOAD_X_WAIT ; 0                       ; 0                       ; 0                       ; 0                       ; 0                       ; 1                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_CYCLE_0     ; 0                       ; 0                       ; 0                       ; 0                       ; 1                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_CYCLE_1     ; 0                       ; 0                       ; 0                       ; 1                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_CYCLE_2     ; 0                       ; 0                       ; 1                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_CYCLE_3     ; 0                       ; 1                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
+; current_state.S_CYCLE_4     ; 1                       ; 0                       ; 0                       ; 0                       ; 0                       ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 0                      ; 0                           ; 1                      ;
++-----------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+-----------------------------+------------------------+
+
+
