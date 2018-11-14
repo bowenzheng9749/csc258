@@ -67,98 +67,66 @@ module part2
 			
 	// Put your code here. Your code should produce signals x,y,colour and writeEn/plot
 	// for the VGA controller, in addition to any other functionality your design may require.
+
     
-    combined c1 (
-		.clock(CLOCK_50),
-		.resetn(resetn),
-		
-		.data(SW[6:0]),
-		.colour(SW[9:7]),
-		.ld(~KEY[3]),
-		.go(~KEY[1]),
-		.out_x(x),
-		.out_y(y),
-		.out_colour(colour),
-		.plot(writeEn)
-);
+    combined c1 (CLOCK_50, reset_n, SW[6:0], SW[9:7], ~KEY[3], ~KEY[1], x, y, color, writeEn);
     
 endmodule
 
-module combined (clock, resetn, data, colour, ld, go, out_x, out_y, out_colour, plot);
+module combined (clock, resetn, data, color, ld, go, out_x, out_y, out_c, plot);
 	input clock, resetn, ld, go;
 	input [6:0] data;
-	input [2:0] colour;
+	input [2:0] color;
 	output [7:0] out_x;
 	output [6:0] out_y;
-	output [2:0] out_colour;
+	output [2:0] out_c;
 	output plot;
 	
 	wire ld_x, ld_y, ld_r,  draw;
 	
-	// Instansiate datapath
-	datapath d0(
-		.resetn(resetn),
-		.clock(clock),
-		.data(data),
-		.colour(colour),
-		
-		.ld_x(ld_x),
-		.ld_y(ld_y),
-		.ld_r(ld_r),
-		.draw(draw),
-		
-		.out_x(out_x),
-		.out_y(out_y),
-		.out_colour(out_colour)
-	);
+	//datapath
+	datapath d0(resetn, clock, data, color, ld_x, ld_y, ld_r, draw, out_x, out_y, out_c);
 
-    // Instansiate FSM control
-   control c0(
-		.clock(clock),
-		.resetn(resetn),
-		.ld(ld),
-		.go(go),
-		
-		.ld_x(ld_x),
-		.ld_y(ld_y),
-		.ld_r(ld_r),
-		.draw(draw),
-		.plot(plot)
-		);
-	
+	// control
+   control c0(clock, resetn, ld, go, ld_x, ld_y, ld_r, draw, plot);
 endmodule
 
 
-module datapath(data, colour, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_y, out_colour);
+module datapath(data, color, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_y, out_c);
 	input [6:0] data;
-	input [2:0] colour;
+	input [2:0] color;
 	input resetn, clock;
 	input ld_x, ld_y, ld_r, draw;
 	
 	output  [7:0] out_x;
 	output  [6:0] out_y;
-	output reg [2:0] out_colour;
+	output reg [2:0] out_c;
 	
 	reg [7:0] x;
 	reg [6:0] y;
 	reg [3:0] q;
+
+	assign out_x = x + q[1:0];
+	assign out_y = y + q[3:2];
 	
 	always @(posedge clock)
 	begin: load
-		if (!resetn) begin
-			x <= 0;
-			y <= 0;
-			out_colour = 3'b111;
+		if (!resetn) 
+			begin
+				x <= 0;
+				y <= 0;
+				out_c = 3'b111;
 			end
 		else 
 			begin
-				if (ld_x) begin
-					x <= {1'b0, data};
+				if (ld_x) 
+					begin
+						x <= {1'b0, data}; 
 					end
 				else if (ld_y)
-					y <= data;
+						y <= data;
 				else if (ld_r)
-					out_colour = colour;
+						out_c = color;
 			end
 	end
 
@@ -174,10 +142,6 @@ module datapath(data, colour, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_
 					q <= q + 1'b1;
 			end
 	end
-	
-	assign out_x = x + q[1:0];
-	assign out_y = y + q[3:2];
-	
 endmodule
 
 module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
@@ -187,12 +151,12 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 	reg [2:0] current_state, next_state;
 	
 	localparam Start = 3'd0,
-					Load_x = 3'd1,
-					Load_x_wait= 3'd2,
-					Load_y = 3'd3,
-					Load_y_wait = 3'd4,
-					Load_colour = 3'd5,
-					Draw = 3'd6;
+				Load_x = 3'd1,
+				Load_x_wait= 3'd2,
+				Load_y = 3'd3,
+				Load_y_wait = 3'd4,
+				Load_color = 3'd5,					
+				Draw = 3'd6;
 
 	always @(*)
 	begin: state_table
@@ -201,8 +165,8 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 			Load_x: next_state = ld ? Load_x : Load_x_wait;
 			Load_x_wait: next_state = ld ? Load_y : Load_x_wait;
 			Load_y: next_state = ld ? Load_y : Load_y_wait;
-			Load_y_wait: next_state = Load_colour;
-			Load_colour: next_state = go ? Draw : Load_colour;
+			Load_y_wait: next_state = Load_color;
+			Load_color: next_state = go ? Draw : Load_color;
 			Draw: next_state = ld ? Load_x : Draw;
 			default: next_state = Start;
 		endcase
@@ -217,27 +181,31 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 		plot = 1'b0;
 		
 		case (current_state)
-		Load_x: begin 
+		Load_x: 
+			begin 
 			ld_x = 1'b1;
 			end
-		Load_y: begin
+		Load_y: 
+			begin
 			ld_y = 1'b1;
 			end
-		Load_colour : begin
+		Load_color : 
+			begin
 			ld_r = 1'b1;
 			end
-		Draw: begin
+		Draw: 
+			begin
 			draw = 1'b1;
 			plot = 1'b1;
 			end
 		endcase
 	end
 	
-always@(posedge clock)
+	always@(posedge clock)
     begin: state_FFs
         if(!resetn)
             current_state <= Start;
         else
             current_state <= next_state;
-    end // state_FFS
+    end 
 endmodule

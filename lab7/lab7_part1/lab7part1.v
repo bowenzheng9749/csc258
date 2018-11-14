@@ -7,6 +7,7 @@ module ram32x4top(SW, KEY, HEX5, HEX4, HEX2, HEX0);
 	wire [3:0] w;
 	
 	ram32x4 r0(SW[8:4], KEY[0], SW[3:0], SW[9], w);
+    
 hex_decoder H0(
         .hex_digit(w), 
         .segments(HEX0)
