@@ -13,5 +13,5 @@ force {resetn} 0 0, 1 10
 force {go} 0 0, 1 10 -r 20
 force {ld} 0 0, 1 10, 0 20, 1 30, 0 40, 1 50, 0 60
 force {data} 0001010 0, 0010000 20
-force {colour} 100
+force {color} 100
 run 300ns

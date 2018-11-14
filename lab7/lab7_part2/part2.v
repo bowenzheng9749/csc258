@@ -85,10 +85,10 @@ module combined (clock, resetn, data, color, ld, go, out_x, out_y, out_c, plot);
 	wire ld_x, ld_y, ld_r,  draw;
 	
 	//datapath
-	datapath d0(resetn, clock, data, color, ld_x, ld_y, ld_r, draw, out_x, out_y, out_c);
+	datapath d0(data, color, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_y, out_c);
 
 	// control
-   control c0(clock, resetn, ld, go, ld_x, ld_y, ld_r, draw, plot);
+   control c0(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 endmodule
 
 
