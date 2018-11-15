@@ -65,22 +65,22 @@ module part2
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 			
-	// Put your code here. Your code should produce signals x,y,colour and writeEn/plot
+	// Put your code here. Your code should produce signals x,y,colour and writeEn
 	// for the VGA controller, in addition to any other functionality your design may require.
 
     
-    combined c1 (CLOCK_50, reset_n, SW[6:0], SW[9:7], ~KEY[3], ~KEY[1], x, y, color, writeEn);
+    combined c1 (SW[6:0], SW[9:7], ~KEY[3], ~KEY[1], x, y, color, writeEn, CLOCK_50, reset_n);
     
 endmodule
 
-module combined (clock, resetn, data, color, ld, go, out_x, out_y, out_c, plot);
+module combined (data, color, ld, go, out_x, out_y, out_c, writeN, clock, resetn, clock, resetn);
 	input clock, resetn, ld, go;
 	input [6:0] data;
 	input [2:0] color;
 	output [7:0] out_x;
 	output [6:0] out_y;
 	output [2:0] out_c;
-	output plot;
+	output writeN;
 	
 	wire ld_x, ld_y, ld_r,  draw;
 	
@@ -88,7 +88,7 @@ module combined (clock, resetn, data, color, ld, go, out_x, out_y, out_c, plot);
 	datapath d0(data, color, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_y, out_c);
 
 	// control
-   control c0(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
+   control c0(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, writeN);
 endmodule
 
 
@@ -144,29 +144,29 @@ module datapath(data, color, resetn, clock, ld_x, ld_y, ld_r, draw, out_x, out_y
 	end
 endmodule
 
-module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
+module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, writeN);
 	input resetn, clock, go, ld;
-	output reg ld_x, ld_y, ld_r, draw, plot;
+	output reg ld_x, ld_y, ld_r, draw, writeN;
 
 	reg [2:0] current_state, next_state;
 	
-	localparam Start = 3'd0,
-				Load_x = 3'd1,
-				Load_x_wait= 3'd2,
-				Load_y = 3'd3,
-				Load_y_wait = 3'd4,
-				Load_color = 3'd5,					
+	localparam Load_x = 3'd0,
+				Load_x_wait= 3'd1,
+				Load_y = 3'd2,
+				Load_y_wait = 3'd3,
+				Load_color = 3'd4,	
+				Load_color_wait = 3'd5,				
 				Draw = 3'd6;
 
 	always @(*)
 	begin: state_table
 		case (current_state)
-			Start: next_state = ld ? Load_x : Start;
-			Load_x: next_state = ld ? Load_x : Load_x_wait;
-			Load_x_wait: next_state = ld ? Load_y : Load_x_wait;
-			Load_y: next_state = ld ? Load_y : Load_y_wait;
-			Load_y_wait: next_state = Load_color;
-			Load_color: next_state = go ? Draw : Load_color;
+			Load_x: next_state = ld ? Load_x_wait : Load_x;
+			Load_x_wait: next_state = ld ? Load_x_wait : Load_y;
+			Load_y: next_state = ld ? Load_y_wait : Load_y;
+			Load_y_wait: next_state = ld ? Load_y_wait : Load_color;
+			Load_color: next_state = draw ? Load_color_wait : Load_color;
+			Load_color_wait: next_state = Draw ? Load_color_wait : Draw;
 			Draw: next_state = ld ? Load_x : Draw;
 			default: next_state = Start;
 		endcase
@@ -178,7 +178,7 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 		ld_y = 1'b0;
 		ld_r = 1'b0;
 		draw = 1'b0;
-		plot = 1'b0;
+		writeN = 1'b0;
 		
 		case (current_state)
 		Load_x: 
@@ -196,7 +196,7 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, plot);
 		Draw: 
 			begin
 			draw = 1'b1;
-			plot = 1'b1;
+			writeN = 1'b1;
 			end
 		endcase
 	end
