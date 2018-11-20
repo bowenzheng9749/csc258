@@ -211,7 +211,6 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 			end
 		New_y : begin
 			en = 1'b1;
-		endcase
 	end
 	
 always@(posedge clock)
