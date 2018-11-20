@@ -196,21 +196,22 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 		plot = 1'b0;
 		
 		case (current_state)
-		Start: begin
-			en_d = 1'b1;
-			end
-		Draw: begin 
-			select_colour = 1'b0;
-			draw = 1'b1;
-			plot = 1'b1;
-			end
-		Erase: begin
-			select_colour = 1'b1;
-			draw = 1'b1;
-			plot = 1'b1;
-			end
-		New_y : 
-			en = 1'b1;
+			Start: begin
+				en_d = 1'b1;
+				end
+			Draw: begin 
+				select_colour = 1'b0;
+				draw = 1'b1;
+				plot = 1'b1;
+				end
+			Erase: begin
+				select_colour = 1'b1;
+				draw = 1'b1;
+				plot = 1'b1;
+				end
+			New_y: 
+				en = 1'b1;
+		endcase
 	end
 	
 always@(posedge clock)
