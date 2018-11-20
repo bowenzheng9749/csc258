@@ -64,7 +64,9 @@ module datapath(colour, in_x, in_y, reset_n, clock, draw, en, en_d, select_colou
 	output change;
 	
 	reg [6:0] y;
-	reg [3:0] q_x, q_y, frame;
+	reg [3:0]  frame;
+	reg [5:0] q_x;
+	reg [3:0] q_y;
 	reg [19:0] delay;
 	wire frame_en;
 	
