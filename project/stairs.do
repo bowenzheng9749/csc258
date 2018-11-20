@@ -2,7 +2,7 @@ vlib work
 
 vlog -timescale 1ns/1ns stairs.v
 
-vsim stairs
+vsim datapath
 
 log {/*}
 

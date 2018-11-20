@@ -122,9 +122,7 @@ module datapath(colour, in_x, in_y, reset_n, clock, draw, en, en_d, select_colou
 		if (!reset_n)
 			y <= in_y;
 		else if (en == 1'b1)
-			begin
 				y <= y - 1'b1;
-			end
 		else
 			y <= y;
 	end
