@@ -9,7 +9,7 @@ module stairs (clock, in_x, in_y, reset_n, colour, go, out_x, out_y, out_colour,
 	output [2:0] out_colour;
 	output plot;
 	
-	wire  en, en_d, down, select_colour, draw, change, finish_draw;
+	wire  en, en_d, select_colour, draw, change, finish_draw;
 	
 	// Instansiate datapath
 	datapath d0(
@@ -20,7 +20,6 @@ module stairs (clock, in_x, in_y, reset_n, colour, go, out_x, out_y, out_colour,
 		.colour(colour),
 		.en(en),
 		.en_d(en_d),
-		.down(down),
 		.select_colour(select_colour),
 		.draw(draw),
 		
@@ -44,7 +43,6 @@ module stairs (clock, in_x, in_y, reset_n, colour, go, out_x, out_y, out_colour,
 		
 		.en(en),
 		.en_d(en_d),
-		.down(down),
 		.select_colour(select_colour),
 		.draw(draw),
 		.plot(plot)
