@@ -2,7 +2,7 @@ vlib work
 
 vlog -timescale 1ns/1ns part3.v
 
-vsim try
+vsim combined
 
 log {/*}
 
