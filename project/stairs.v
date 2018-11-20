@@ -209,7 +209,7 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 			draw = 1'b1;
 			plot = 1'b1;
 			end
-		New_y : begin
+		New_y : 
 			en = 1'b1;
 	end
 	
