@@ -14,4 +14,4 @@ force {reset_n} 0 0,1 20
 force {colour} 2#101
 force {in_x} 2#0001000
 force {in_y} 2#001000
-run 32000ns
+run 200000ns
