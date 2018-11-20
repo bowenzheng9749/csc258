@@ -73,7 +73,7 @@ module part2
     
 endmodule
 
-module combined (data, color, ld, go, out_x, out_y, out_c, writeN, clock, resetn, clock, resetn);
+module combined (data, color, ld, go, out_x, out_y, out_c, writeN, clock, resetn);
 	input clock, resetn, ld, go;
 	input [6:0] data;
 	input [2:0] color;
@@ -165,10 +165,10 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, writeN);
 			Load_x_wait: next_state = ld ? Load_x_wait : Load_y;
 			Load_y: next_state = ld ? Load_y_wait : Load_y;
 			Load_y_wait: next_state = ld ? Load_y_wait : Load_color;
-			Load_color: next_state = draw ? Load_color_wait : Load_color;
-			Load_color_wait: next_state = Draw ? Load_color_wait : Draw;
+			Load_color: next_state = go ? Load_color_wait : Load_color;
+			Load_color_wait: next_state = go ? Load_color_wait : Draw;
 			Draw: next_state = ld ? Load_x : Draw;
-			default: next_state = Start;
+			default: next_state = Load_x;
 		endcase
 	end
 	
@@ -204,7 +204,7 @@ module control(clock, resetn, go, ld, ld_x, ld_y, ld_r, draw, writeN);
 	always@(posedge clock)
     begin: state_FFs
         if(!resetn)
-            current_state <= Start;
+            current_state <= Load_x;
         else
             current_state <= next_state;
     end 
