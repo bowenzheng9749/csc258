@@ -1,4 +1,4 @@
-module spikes (clock, resetn, go, out_x, out_y, out_colour, plot);
+module spikes (clock, resetn, go, spike_out_x, spike_out_y, out_colour, plot);
 	input clock, resetn, go;
 	output [7:0] spike_out_x;
 	output [7:0] spike_out_y;
@@ -12,8 +12,8 @@ module spikes (clock, resetn, go, out_x, out_y, out_colour, plot);
 		.resetn(resetn),
 		.clock(clock),
 		.draw(draw),	
-		.out_x(out_x),
-		.out_y(out_y),
+		.out_x(spike_out_x),
+		.out_y(spike_out_y),
 		.out_colour(out_colour)
 	);
 
