@@ -64,7 +64,7 @@ module datapath(colour, in_x, in_y, reset_n, clock, draw, en, en_d, select_colou
 	output change;
 	
 	reg [6:0] y;
-	reg [3:0]  frame;
+	reg [3:0] frame;
 	reg [5:0] q_x;
 	reg [3:0] q_y;
 	reg [19:0] delay;
@@ -78,20 +78,23 @@ module datapath(colour, in_x, in_y, reset_n, clock, draw, en, en_d, select_colou
 		else 
 			begin
 				if (select_colour)
-					out_colour = 3'b111;
+					out_colour <= 3'b111;
 				else
-					out_colour = colour;
+					out_colour <= colour;
 			end
 	end
 	
 	always @(posedge clock)
 	begin: delay_counter
 		if (!reset_n)
-			delay <= 20'd833_333;
+			//delay <= 20'd833_333;
+			delay <= 20'd100;
 		else if (en_d == 1'b1)
 			begin
 				if (delay == 0)
-					delay <= 20'd833_333;
+					//delay <= 20'd833_333;
+					delay <= 20'd100;
+
 				else
 					delay <= delay - 1'b1;
 			end
@@ -138,12 +141,12 @@ module datapath(colour, in_x, in_y, reset_n, clock, draw, en, en_d, select_colou
 			end
 		else if (draw)
 			begin
-				if (q_x == 6'b100111) 
+				if (q_x == 6'b101000) 
 				begin
 					q_x <= 6'b000000;
 					q_y <= q_y + 1'b1;
 				end
-				else if (q_y == 4'b1001) 
+				else if (q_y == 4'b1010) 
 				begin
 					q_x <= 6'b000000;
 					q_y <= 4'b0000;
@@ -170,15 +173,17 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 	
 	localparam Start = 3'd0,
 					Draw = 3'd1,
-					Erase= 3'd2,
-					New_y = 3'd3;
+					Draw_wait = 3'd2,
+					Erase= 3'd3,
+					New_y = 3'd4;
 					
 
 	always @(*)
 	begin: state_table
 		case (current_state)
 			Start: next_state = go ? Draw : Start;
-			Draw: next_state = change ?  Erase: Draw;
+			Draw: next_state = finish_draw ?  Draw_wait: Draw;
+			Draw_wait: next_state = change ? Erase: Draw_wait;
 			Erase: next_state = finish_draw ? New_y : Erase;
 			New_y: next_state = Draw;
 			default: next_state = Start;
@@ -188,7 +193,7 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 	always @(*)
 	begin: signals
 		en = 1'b0; 
-		en_d = 1'b0;
+		en_d = 1'b1;
 		select_colour = 1'b0;
 		draw = 1'b0;
 		plot = 1'b0;
@@ -198,6 +203,7 @@ module control(clock, reset_n, go, change, finish_draw, out_x, out_y, en, en_d, 
 				en_d = 1'b1;
 				end
 			Draw: begin 
+				
 				select_colour = 1'b0;
 				draw = 1'b1;
 				plot = 1'b1;
