@@ -44,8 +44,10 @@ module datapath(resetn, clock, draw, out_x, out_y, out_colour);
 	always @(posedge clock)
 	begin: counter
 		if (! resetn)
+			begin
 			q_x <= 8'b00000000;
 			q_y <= 8'b00000000;
+			end
 		else if (draw)
 			begin
 				if (q_x == 8'b10100000)
