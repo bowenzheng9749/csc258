@@ -2,14 +2,14 @@
 //----------------------------------------
 //				Combined   
 //----------------------------------------
-module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state, finish);
+module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state, next_state);
 	input resetn, go, sclock, clock;
 	output writeEn;
 	output [7:0] x;
 	output [6:0] y;
 	output [2:0] colour;
-	output [2:0] current_state;
-	output finish;
+	output [2:0] current_state, next_state;
+
 	wire finish_draw;
 	wire erase;
 
@@ -18,9 +18,8 @@ module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state,
 
 	stair_datapath sd0(resetn, clock , en, draw, change, 8'd60, 7'd40, erase, x, y, colour, finish_draw);
 
-	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state);
+	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state ,next_state);
 
-	assign finish = finish_draw;
 	
 	delay_counter d0(clock, resetn, en_d, frame_en);
 	
@@ -153,11 +152,11 @@ endmodule
 module control(
 	input reset_n, clock, go, change, finish_draw, 
 	output reg en, en_d, draw, plot, erase,
-	output reg [2:0] current_state
+	output reg [2:0] current_state, next_state
 	
 );
 
-	reg [2:0] next_state;
+	//reg [2:0] next_state;
 
 	localparam  Start = 3'd0,
 					Start_Wait = 3'd1,
