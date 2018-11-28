@@ -153,11 +153,11 @@ endmodule
 module control(
 	input reset_n, clock, go, change, finish_draw, 
 	output reg en, en_d, draw, plot, erase,
-	output [2:0] current_state
+	output reg [2:0] current_state
 	
 );
 
-	reg [2:0] current_state, next_state;
+	reg [2:0] next_state;
 
 	localparam  Start = 3'd0,
 					Start_Wait = 3'd1,
