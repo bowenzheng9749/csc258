@@ -2,13 +2,14 @@
 //----------------------------------------
 //				Combined   
 //----------------------------------------
-module combined(resetn, go, sclock, clock, writeEn, x, y, colour);
+module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state);
 	input resetn, go, sclock, clock;
 	output writeEn;
 	output [7:0] x;
 	output [6:0] y;
 	output [2:0] colour;
-	
+	output [2:0] current_state;
+
 	wire finish_draw;
 	wire erase;
 
@@ -17,7 +18,7 @@ module combined(resetn, go, sclock, clock, writeEn, x, y, colour);
 
 	stair_datapath sd0(resetn, clock , en, draw, change, 8'd60, 7'd40, erase, x, y, colour, finish_draw);
 
-	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase);
+	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state);
 
 
 	
@@ -104,11 +105,13 @@ module delay_counter(
 	always @(posedge clock)
 		begin: delay_counter
 			if (!reset_n)
-				delay <= 20'd833_334;
+				//delay <= 20'd833_334;
+				delay <= 20'd5;
 			else if (en_d == 1'b1)
 				begin
 					if (delay == 0)
-						delay <= 20'd833_334;
+						//delay <= 20'd833_334;
+						delay <= 20'd5;
 					else
 						delay <= delay - 1'b1;
 				end
@@ -130,14 +133,14 @@ module frame_counter(
 				frame <= 6'd0;
 			else if (frame_en == 1'b1)
 				begin
-					//if (frame == 4'd14)
-					if (frame == 6'd14)
+					//if (frame == 4'd4)
+					if (frame == 6'd4)
 						frame <= 6'd0;
 					else
 						frame <= frame + 1'b1;
 				end
 		end
-		assign change = (frame == 6'd14) ? 1 : 0;
+		assign change = (frame == 6'd4) ? 1 : 0;
 		//assign output_color = (frame == 4'd14) ? 3'b000 : input_color;
 			
 endmodule
@@ -149,7 +152,8 @@ endmodule
 //----------------------------------------
 module control(
 	input reset_n, clock, go, change, finish_draw, 
-	output reg en, en_d, draw, plot, erase
+	output reg en, en_d, draw, plot, erase,
+	output [2:0] current_state
 	
 );
 
