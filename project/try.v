@@ -18,7 +18,7 @@ module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state,
 
 	stair_datapath sd0(resetn, clock , en, draw, change, 8'd60, 7'd40, erase, x, y, colour, finish_draw);
 
-	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state ,next_state);
+	control c0(resetn, clock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state ,next_state);
 
 	
 	delay_counter d0(clock, resetn, en_d, frame_en);
