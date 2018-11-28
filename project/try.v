@@ -2,14 +2,14 @@
 //----------------------------------------
 //				Combined   
 //----------------------------------------
-module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state);
+module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state, finish);
 	input resetn, go, sclock, clock;
 	output writeEn;
 	output [7:0] x;
 	output [6:0] y;
 	output [2:0] colour;
 	output [2:0] current_state;
-
+	output finish;
 	wire finish_draw;
 	wire erase;
 
@@ -20,7 +20,7 @@ module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state)
 
 	control c0(resetn, sclock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state);
 
-
+	assign finish = finish_draw;
 	
 	delay_counter d0(clock, resetn, en_d, frame_en);
 	
