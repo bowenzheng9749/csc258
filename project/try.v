@@ -296,7 +296,7 @@ module stair_x(clock, reset_n, enable, q);
 			q <= 8'd0;
 		else if (enable == 1'b1)
 		begin
-			if (q == 8'd40)
+			if (q == 8'd39)
 				q <= 8'd0;
 			else
 				q <= q + 1'b1;
@@ -315,7 +315,7 @@ module stair_y(clock, reset_n, enable, q);
 			q <= 7'd0;
 		else if (enable == 1'b1)
 			begin
-				if (q == 7'd5)
+				if (q == 7'd4)
 					q <= 7'd0;
 				else
 					q <= q + 1'b1;
