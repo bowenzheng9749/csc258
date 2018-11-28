@@ -191,7 +191,7 @@ module control(
 			
 			case (current_state)
 				Draw: begin
-						en_d = 1'b1;
+						//en_d = 1'b1;
 						draw = 1'b1;
 						plot = 1'b1;
 					end
