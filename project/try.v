@@ -109,8 +109,8 @@ module delay_counter(
 			else if (en_d == 1'b1)
 				begin
 					if (delay == 0)
-						//delay <= 20'd833_334;
-						delay <= 20'd5;
+						delay <= 20'd833_334;
+						//delay <= 20'd5;
 					else
 						delay <= delay - 1'b1;
 				end
@@ -120,28 +120,25 @@ endmodule
 
 module frame_counter(
 	input clock, reset_n, frame_en,
-	//input [2:0] input_color,
 	output change
-	//output [2:0] output_color
 );	
-	reg [5:0] frame;
+	reg [3:0] frame;
 
 	always @(posedge clock)
 		begin: frame_counter
 			if (!reset_n)
-				frame <= 6'd0;
+				frame <= 4'd0;
 			else if (frame_en == 1'b1)
 				begin
-					//if (frame == 4'd4)
-					if (frame == 6'd4)
-						frame <= 6'd0;
+					if (frame == 4'd14)
+					//if (frame == 6'd4)
+						frame <= 4'd0;
 					else
 						frame <= frame + 1'b1;
 				end
 		end
-		assign change = (frame == 6'd4) ? 1 : 0;
-		//assign output_color = (frame == 4'd14) ? 3'b000 : input_color;
-			
+		assign change = (frame == 4'd14) ? 1 : 0;
+		
 endmodule
 
 
