@@ -16,7 +16,7 @@ module combined(resetn, go, sclock, clock, writeEn, x, y, colour, current_state,
 	wire en, en_d, draw;
 	wire frame_en, change;
 
-	stair_datapath sd0(resetn, clock , en, draw, change, 8'd60, 7'd40, erase, x, y, colour, finish_draw);
+	stair_datapath sd0(resetn, clsock , en, draw, change, 8'd60, 7'd40, erase, x, y, colour, finish_draw);
 
 	control c0(resetn, clock, go, change, finish_draw,  en, en_d, draw, writeEn, erase, current_state ,next_state);
 
@@ -255,8 +255,7 @@ module stair_datapath(
 	stair_y_counter s_y_c0(clock, reset_n, en, stair_in_y, stair_y);
 	stair_draw s_d0(clock, reset_n, draw, stair_in_x, stair_y, stair_finish_draw, stair_out_x, stair_out_y);
 	
-//	assign stair_out_x = stair_in_x + stair_q_x;
-//	assign stair_out_y = stair_y + stair_q_y;
+
 	assign stair_out_colour = colour;
 endmodule
 
