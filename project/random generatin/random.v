@@ -3,7 +3,7 @@ module random (enable, clock, reset, out);
 input clock, reset;
 input enable;
 output [7:0] out;
-reg [7:0] temp_out
+reg [7:0] temp_out;
 
 
 wire linear_feedback;
