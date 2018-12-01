@@ -23,21 +23,16 @@ begin
  else
  begin
   random <= random_next;
-  count <= count_next;
  end
 end
  
 always @ (*)
 begin
- random_next = random; //default state stays the same
- count_next = count;
-   
+ random_next = random; //default state stays the same  
   random_next = {random[6:0], feedback}; //shift left the xor'd every posedge clock
-  count_next = count + 1;
  
  if (give_random)
  begin
-  count = 0;
   random_done = random; //assign the random number to output
  end
 end
