@@ -16,7 +16,7 @@ always @ (posedge clock)
 begin
  if (!reset)
  begin
-  random <= 13'0001001000101; 
+  random <= 13'hF; 
   count <= 0;
  end
   
