@@ -16,7 +16,7 @@ always @ (posedge clock)
 begin
  if (!reset)
  begin
-  random <= 13'1111111111111; //An LFSR cannot have an all 0 state, thus reset to FF
+  random <= 13'hF; //An LFSR cannot have an all 0 state, thus reset to FF
   count <= 0;
  end
   
