@@ -1,18 +1,19 @@
 module rand (
-    input [12:0] random,
     input clock,
     input reset,
     output [12:0] rnd 
     );
- 
-wire feedback = random[12] ^ random[3] ^ random[2] ^ random[0]; 
- 
+
 reg [12:0] random, random_next, random_done;
 reg [3:0] count, count_next; //to keep track of the shifts
+
+wire feedback = random[12] ^ random[3] ^ random[2] ^ random[0]; 
+ 
+
  
 always @ (posedge clock or posedge reset)
 begin
- if (reset)
+ if (!reset)
  begin
   random <= 13'hF; //An LFSR cannot have an all 0 state, thus reset to FF
   count <= 0;
