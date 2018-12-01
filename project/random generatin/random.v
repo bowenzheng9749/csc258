@@ -7,15 +7,14 @@ output reg [7:0] out;
 
 wire linear_feedback;
 
-assign linear_feedback = !(out[7] ^ out[3]);
-
+assign linear_feedback = random[7] ^ random[3] ^ random[2] ^ random[0]; 
 always @(posedge clock)
 begin
   if (!reset)
-    out <= 8'b01101011;
+    out <= 8'hF;
   else if (enable)
     begin
-      out <= {out[6],out[5],out[4],out[3],out[2],out[1],out[0],linear_feedback};
+      out <= {out[6:0], linear_feedback};
     end
 end
 
