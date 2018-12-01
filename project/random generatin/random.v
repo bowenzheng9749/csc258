@@ -1,8 +1,8 @@
-module random (enable, clock, reset);
+module random (enable, clock, reset, out);
 
-ouput [7:0] out;
 input clock, reset;
 input enable;
+ouput [7:0] out;
 
 reg [7:0] out;
 
