@@ -2,9 +2,8 @@ module random (enable, clock, reset, out);
 
 input clock, reset;
 input enable;
-ouput [7:0] out;
+output reg [7:0] out;
 
-reg [7:0] out;
 
 wire linear_feedback;
 
