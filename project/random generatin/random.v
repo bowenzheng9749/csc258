@@ -4,11 +4,12 @@ module rand (
     output [12:0] rnd 
     );
 
+reg [12:0] random, random_next, random_done;
+reg [3:0] count, count_next; //to keep track of the shifts
 
 wire feedback = random[12] ^ random[3] ^ random[2] ^ random[0]; 
  
-reg [12:0] random, random_next, random_done;
-reg [3:0] count, count_next; //to keep track of the shifts
+
 
  
 always @ (posedge clock or posedge reset)
