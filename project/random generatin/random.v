@@ -1,4 +1,5 @@
 module rand (
+    input [12:0] random,
     input clock,
     input reset,
     output [12:0] rnd 
