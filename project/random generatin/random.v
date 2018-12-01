@@ -14,7 +14,7 @@ wire feedback = random[12] ^ random[3] ^ random[2] ^ random[0];
  
 always @ (posedge clock)
 begin
- if (!reset)
+ if (reset)
  begin
   random <= 13'hF; 
   count <= 0;
