@@ -7,7 +7,7 @@ output reg [7:0] out;
 
 wire linear_feedback;
 
-assign linear_feedback = random[7] ^ random[3] ^ random[2] ^ random[0]; 
+assign linear_feedback = out[7] ^ out[3] ^ out[2] ^ out[0]; 
 always @(posedge clock)
 begin
   if (!reset)
