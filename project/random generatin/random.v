@@ -37,8 +37,6 @@ begin
   count = 0;
   random_done = random; //assign the random number to output after 13 shifts
  end
-  
 end
+endmodule
  
- 
-assign rnd = random_done;
